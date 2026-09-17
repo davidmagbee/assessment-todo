@@ -173,3 +173,7 @@ Started Vite at http://localhost:3000 and opened the Codex browser panel. HTTP 2
 ## Request integration checkpoint
 
 Connected request-scoped guest/account ownership, private cache headers, Resend delivery adapter, bounded PostgreSQL pool, typed task RPC and auth HTTP route. 41 tests pass; all four current-source coverage metrics 100%; typecheck/build pass. Tests use real application/auth code with PGlite, replacing only HTTP/database/email external boundaries. Generated a local auth secret without printing it. Task UI follows next; no live email sent.
+
+## Functional local application checkpoint
+
+Replaced scaffold with Small Wins: monochrome/violet responsive task UI, create/edit forms, confirmed deletion, URL search/status filters, native command palette (Cmd/Ctrl+K; Tab/Enter/Escape), email OTP controls and safe route recovery screens. Account switches remount the streamed list boundary. 56 tests pass; all four coverage metrics 100%; typecheck/build pass. Browser smoke created a task through RPC, verified reload persistence and updated its description; removed only that exact assistant-created fixture afterward. Live email delivery awaits user check. Vercel CLI authentication requested; hosted deployment remains pending.

@@ -1,8 +1,12 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 
+import { Unavailable, MissingPage } from '../ui/route-feedback'
+
 import appCss from '../styles.css?url'
 
 export const Route = createRootRoute({
+  errorComponent: Unavailable,
+  notFoundComponent: MissingPage,
   head: () => ({
     meta: [
       {
@@ -13,7 +17,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Small Wins — your next step',
       },
     ],
     links: [
