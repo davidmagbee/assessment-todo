@@ -93,3 +93,7 @@ Reported Resend login and asked to resume unfinished work after interruption. Lo
 ## Assistant [summary]
 
 Verified completed push/clean state, created auth.davidmagbee.com in Resend, found authoritative DNS at Vercel, obtained approval, added exact issued records, and confirmed public resolution. Generated Better Auth schema and SQL migration; implemented/tested owner-scoped task repository. Requested Neon login while continuing local work.
+
+## Assistant [implementation summary]
+
+Implemented and tested private guest identity persistence and fixed expiry. No import or account-list merging added.

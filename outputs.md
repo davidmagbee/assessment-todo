@@ -118,3 +118,7 @@ Added concrete setup sequence to plan.md. No provider resources, credentials, or
 Verified 22 tests passing, all authored coverage metrics 100%, typecheck/build pass. Generated auth schema excluded under approved generated-code exclusion; migrations executed against isolated PGlite. Tests cover account/guest isolation, unauthorized update/delete, literal search, status filtering, validation and ownership constraints.
 
 Resend domain ID: 0677dbaa-e874-4e94-8877-eb19b51b4d6a. DNS added with approval: TXT resend._domainkey.auth (issued key), TXT send.auth (v=spf1 include:amazonses.com ~all), MX send.auth (feedback-smtp.us-east-1.amazonses.com, priority 10), TTL 60. Vercel warned about auth-subdomain wildcard override; scoped exception confirmed. Existing explicit root/www portfolio configuration untouched. Public DNS confirms records. Resend DKIM verified; sending pending at observation. No API key created or test email sent.
+
+## Guest identity verification
+
+Five guest-session tests run against PGlite with real migrations. They verify resume, unchanged expiry, exact expiry boundary and rejected credentials through the resolver interface. Token generation uses node:crypto; only SHA-256 hashes are persisted. Combined current suite passes; HTTP cookie integration remains unimplemented.

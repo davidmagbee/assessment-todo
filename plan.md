@@ -151,3 +151,7 @@ Coverage includes every authored src TS/TSX file, excludes only generated route 
 Interrupted push had completed; main matched GitHub at 66de197 with no pending process. Resend subdomain created and approved DKIM/SPF/MX records added in Vercel. Public DNS resolves all three; Resend DKIM verified, full sending status pending at this checkpoint.
 
 Database schema and first SQL migration generated; task repository CRUD and combined search/status implemented and tested with isolated PGlite PostgreSQL. Guest identity/expiry, live DB, auth runtime, server functions, UI and deployment remain. Neon browser login requested.
+
+## Guest identity checkpoint
+
+Implemented hashed guest credentials with fixed 30-day expiry. Valid credentials resume the same identity without renewal; expired, absent, malformed, and unknown credentials create a fresh identity. HTTP cookie integration remains next.
