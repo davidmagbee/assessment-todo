@@ -62,3 +62,5 @@ References: [AIHero](https://www.aihero.dev/skills), [Matt Pocock skills](https:
 - Existing Neon organization: org-cool-block-43114340.
 - Resend account existence not answered; do not assume none exists.
 - Account existence does not establish authenticated CLI/API access.
+
+[Confirmed user decisions] Proceed with Drizzle stack; user primarily knows Prisma. Sign-out restores valid guest list; fixed 30-day expiry and newest-created-first order accepted. Sender login@auth.davidmagbee.com accepted. Resend account created; onboarding incomplete.

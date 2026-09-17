@@ -77,3 +77,11 @@ Provided davidmagbee.com Netlify DNS management link and existing Vercel and Neo
 ## Assistant [summary]
 
 Recorded infrastructure inventory and setup checklist; proposed auth.davidmagbee.com as a dedicated sending subdomain. Kept provider-generated DNS values, account access, and Resend availability explicitly unresolved. No DNS or cloud-resource changes.
+
+## User [summary]
+
+Approved proposed stack, guest switch/expiry/order defaults, and login@auth.davidmagbee.com sender. Noted Prisma experience and unfamiliarity with Drizzle. Created Resend account but has not completed onboarding.
+
+## Assistant [summary]
+
+Started implementation using TDD at the agreed input/task/UI boundaries. Installed stable database/auth dependencies and coverage tooling; added task validation and safe URL-filter contracts. Verified SSR through the real router. Temporary untested source correctly failed coverage gate, then was removed. Inspected Resend browser session: login required; asked user to sign in. Added ADRs and Drizzle orientation.

@@ -9,7 +9,7 @@
 - Read current plan and relevant notes first; consult conversation history only when needed. Do not claim measured token savings without measurement.
 - Every code-change handoff: semantic commit message, staging groups/commands if multiple tasks, PR body and post-push delta, manual QA steps.
 - Skill installation is project-local under .agents/skills with skills-lock.json. Read a skill before applying it. Installation does not authorize unrelated actions.
-- Initial scaffold is complete. Architecture grilling must precede feature implementation. Vercel and Neon remain provisional.
+- Initial architecture round is confirmed. Use Vercel Node, Neon PostgreSQL, Drizzle, Better Auth email OTP, and Resend. See docs/adr and plan.md.
 - Keep secrets out of tracked files and shared planning material.
 
 - Commit completed, validated work in atomic semantic commits. Separate unrelated tasks and record validation.

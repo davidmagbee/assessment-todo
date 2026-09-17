@@ -135,3 +135,13 @@ Final behavior proposals: sign-out restores the still-valid private guest list; 
 6. Test real OTP delivery plus expiry/retry/failure behavior; never commit OTPs or secrets.
 
 [Unknown] Resend account status, DNS write access, current DNS records, and authenticated provider access. No infrastructure resources or DNS records modified in this checkpoint.
+
+## Architecture agreement and implementation start
+
+User confirmed proposed stack and remaining guest/order defaults. Architecture round complete for initial implementation; unresolved provider access is setup work, not a reopened product decision. ADRs record private ownership and auth/persistence choices.
+
+Initial slice: pinned dependencies, test/coverage tooling, public task-input and URL-filter validation, baseline SSR test. Next: database schema/migrations, owner-scoped repository and expiry, server functions, UI and OTP integration, deployment/production acceptance.
+
+Implementation limits: title 200 characters, description 5000, URL query 200; trim surrounding whitespace, new status defaults to todo. Malformed URL values fall back to all/no search. These are implementation defaults, adjustable without changing core scope.
+
+Coverage includes every authored src TS/TSX file, excludes only generated route tree and declarations. Current report covers the small scaffold/input slice; it is not proof of full app behavior or end-to-end coverage.

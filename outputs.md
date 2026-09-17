@@ -102,3 +102,13 @@ Read-only research verified documented Start/Vercel Node, Better Auth/Drizzle Po
 Documentation-only update based on user-provided account references. Netlify DNS: https://app.netlify.com/teams/macuser413/dns/davidmagbee.com ; Vercel: https://vercel.com/davidmagbees-projects ; Neon: https://console.neon.tech/app/org-cool-block-43114340/projects . These links were provided by the user, not authenticated/inspected in this checkpoint.
 
 Added concrete setup sequence to plan.md. No provider resources, credentials, or DNS records created/changed. Verification: staged whitespace check; app tests not rerun for documentation-only edits.
+
+## Validation foundations
+
+- Task input first failed due to missing implementation; after implementation, valid/default/invalid/limit cases passed. URL-search test likewise failed before its schema existed, then passed.
+- 16 tests cover validation and the scaffold's server-rendered document. Coverage reports 100% for current authored source; zero application branches currently exist (0/0), so branch percentage is vacuous at this stage.
+- Negative coverage probe: temporary untested branch-bearing source caused all four thresholds to fail. Probe removed.
+- Resend in-app browser redirected to login; no onboarding/DNS change performed.
+- Installed stable drizzle-orm 0.45.2 and drizzle-kit 0.31.10, Better Auth/adapter 1.7.5; resolved node-postgres, adapter, plugin, and TanStack integration exports.
+- npm audit reports four moderate dependency findings along drizzle-kit → esm-loader → core-utils → esbuild. This also appears with --omit=dev because Better Auth references drizzle-kit. Advisory: https://github.com/advisories/GHSA-67mh-4wv8-2f99 . Suggested automatic fix downgrades Drizzle Kit incompatibly; not applied. No affected esbuild development server intentionally started.
+- Schema, database connection, auth behavior, app UI, and deployed acceptance remain incomplete.
