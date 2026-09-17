@@ -61,3 +61,11 @@ Selected Better Auth email OTP and asked whether it is free. Approved monochrome
 ## Assistant [summary]
 
 Read grill-with-docs and its grilling/domain-modeling instructions; created a glossary and recorded settled decisions. Verified Better Auth MIT license and separate email sender requirements. Prepared next decision round on list/import organization, task fields/search/deletion, guest persistence, and email-domain access. Architecture interview remains incomplete.
+
+## User [summary]
+
+Asked whether Better Auth requires separate email/domain setup; owns domains but not all have mailboxes. Removed imports from initial scope. Confirmed one list, title/description/status, combined search, delete confirmation, and persistent guests. Requested later due dates/priorities/subtasks/tags and undo or deleted/archived view. Asked to proceed with resolving unknowns.
+
+## Assistant [summary]
+
+Explained auth versus outbound delivery and that a sending domain does not need a mailbox. Asked for chosen domain/DNS provider and existing Vercel/Neon/Resend accounts. Recorded revised scope and proposed minimal ownership/schema, rendering, and test boundaries; delegated read-only stack compatibility verification under grilling instructions.

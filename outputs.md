@@ -84,3 +84,15 @@ Repository destination, deadline, runtime selection, GitHub authentication, depl
 - Resend sending-domain verification: https://resend.com/docs/dashboard/domains/introduction
 
 Created CONTEXT.md as a glossary, not an implementation spec. Updated current design tree. Documentation-only change; no app code/test changes. Auth, schema, email delivery, and coverage remain unimplemented.
+
+## Architecture clarification
+
+Documentation-only changes: import removed from release scope, confirmed task behavior recorded, ownership/schema/SSR/test proposals added. No application behavior implemented.
+
+Verified official documentation:
+- https://better-auth.com/docs/integrations/tanstack
+- https://resend.com/docs/dashboard/domains/introduction (sending verification and optional inbound setup)
+
+Local inspection: vercel and neonctl do not resolve on current PATH. This does not establish whether the user has accounts. Domain/DNS and account inventory questions are pending.
+
+Read-only research verified documented Start/Vercel Node, Better Auth/Drizzle PostgreSQL, and Drizzle/Neon integration. Adapter import paths differ between some current docs; implementation must verify installed exports. Sources recorded in plan.md.

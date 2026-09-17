@@ -46,3 +46,11 @@ References: [AIHero](https://www.aihero.dev/skills), [Matt Pocock skills](https:
 - Visual preference: crisp monochrome with playful accents, informed by https://blueagilis.com/. Final proposal pending discussion.
 
 [Confirmed by user] Initial authentication: Better Auth email one-time codes. Design: crisp monochrome with blue/violet accents. Explicit task imports accepted; organization remains open. User explicitly invoked /grill-with-docs and asked whether grilling was complete.
+
+## Confirmed simplification
+
+[User decisions] No guest import in initial release. One list per guest/account; each new identity starts empty. Required title, optional plain-text description, status. Search is case-insensitive substring over title/description combined with status, reflected in URL. Confirm before deletion. Guests persist across browser restarts with proposed 30-day expiry accepted.
+
+[Post-acceptance backlog] Add due dates, priorities, subtasks, tags, and undo or a recoverable deleted/archived list incrementally. Public/team boards remain later scope. Imports are deferred.
+
+[User context] Owns multiple domains; one has email service and an unused mailbox. Sending domain/DNS provider not chosen.

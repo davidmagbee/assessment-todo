@@ -95,3 +95,30 @@ User authorized CLI repository creation and push, with private visibility. Exist
 [Proposal] One personal list initially; imports join that list with original task dates/status preserved and deterministic newest-created-first order. Import origin is provenance rather than a new user-visible category. Any sorting/grouping choice remains a user decision.
 
 [Verified] Better Auth core is MIT-licensed. Email OTP requires an email sender. Resend is a candidate with a free tier, but a verified owned sending domain is needed for normal delivery. Hosting, database, domain, and provider costs remain separate; no guarantee of zero total operating cost.
+
+## Amendment — remove initial import and settle task behavior
+
+Supersedes earlier initial import proposals: no import in first release. New guest and account identities start empty; existing identities retain their own lists. Signing in switches ownership context; it must never expose guest tasks to the account implicitly or erase the account's existing tasks. Guest-list behavior after sign-out still needs explicit agreement.
+
+Confirmed: one list; title/optional description/status; case-insensitive title/description substring search combined with status in URL; deletion confirmation; guest persistence and 30-day expiry. Sorting newest-created-first with stable ID tie-breaker remains proposed, not independently confirmed.
+
+## Proposed implementation map (not implemented)
+
+- Better Auth owns its user/session/account/verification schema; generate from the chosen version rather than inventing auth columns.
+- Application guest identities have opaque credentials, stored as hashes server-side, with expiry. Browser cookie is HttpOnly, Secure in production, SameSite=Lax. Fixed 30-day expiry is proposed to make lifecycle predictable.
+- Tasks: ID, title, optional description, status, created/updated timestamps, and exactly one owner: account user or guest. Database constraint enforces exclusive ownership; every server operation scopes access to the server-resolved owner.
+- One implicit list per owner: no board/team/list-membership tables until collaboration is implemented. No import tables.
+- Auth switch clears owner-specific client state to prevent cross-owner cache display. Existing account lists are loaded on return.
+- First release deletion is confirmed hard delete. Later recoverable deletion needs a separate lifecycle design; archive and trash are not synonyms.
+- Main route renders full-document SSR with validated URL filters. Resolve identity before querying tasks; stream the task result into a loading boundary without artificial delay. Do not cache private responses publicly.
+- Tests: ownership isolation, guest expiry, CRUD/validation, combined search/status, delete cancellation, session switching, keyboard palette/focus, OTP failures, SSR and production deployment smoke. Enforce agreed coverage across authored code; real-provider smoke supplements deterministic tests.
+
+Open: stack finalization after official compatibility verification; sending domain/DNS and account access; sign-out guest handling; fixed versus sliding expiry; final shared-understanding confirmation.
+
+## Verified stack proposal
+
+TanStack Start + Vercel Node runtime via documented Nitro integration; Neon PostgreSQL + Drizzle; Better Auth email OTP + Resend. No separate API service or browser database. Use transaction-capable PostgreSQL driver on Node; verify stable package versions and actual exports before adding dependencies. Account provisioning and secrets remain pending.
+
+Sources: https://tanstack.com/start/latest/docs/framework/react/guide/hosting ; https://better-auth.com/docs/adapters/drizzle ; https://orm.drizzle.team/docs/connect-neon
+
+Final behavior proposals: sign-out restores the still-valid private guest list; fixed guest expiry 30 days from creation; newest-created-first stable ordering. These are not yet confirmed.

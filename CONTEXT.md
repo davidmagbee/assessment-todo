@@ -17,7 +17,7 @@ The private collection of tasks belonging to a signed-in person.
 _Avoid_: Public board, team board.
 
 **Guest import**:
-An explicitly accepted transfer of guest tasks into a signed-in person's personal list without replacing existing tasks.
+A deferred capability for explicitly transferring guest tasks into a signed-in person's personal list. Initial release keeps guest and account lists separate.
 _Avoid_: Sync (import does not imply ongoing synchronization).
 
 **Public board**:
