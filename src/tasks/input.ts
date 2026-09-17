@@ -16,3 +16,7 @@ export const taskSearch = z.object({
 })
 
 export type TaskSearch = z.infer<typeof taskSearch>
+
+// Optional ID selects update; ownership is deliberately absent from the client contract.
+export const taskSave = taskInput.extend({ id: z.uuid().optional() })
+export const taskId = z.object({ id: z.uuid() })

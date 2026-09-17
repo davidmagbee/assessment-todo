@@ -111,3 +111,7 @@ Seven Neon skills installed project-locally. Exact neon mcp -y default installed
 ## User / assistant [summary]
 
 User requested continuation and a visible local instance. Started local dev server, opened browser preview, verified SSR response and applied committed database migrations. Current visual remains starter scaffold.
+
+## Request integration checkpoint
+
+Connected request-scoped guest/account ownership, private cache headers, Resend delivery adapter, bounded PostgreSQL pool, typed task RPC and auth HTTP route. 41 tests pass; all four current-source coverage metrics 100%; typecheck/build pass. Tests use real application/auth code with PGlite, replacing only HTTP/database/email external boundaries. Generated a local auth secret without printing it. Task UI follows next; no live email sent.

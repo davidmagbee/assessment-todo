@@ -140,3 +140,7 @@ Validation after Neon setup: npm run typecheck, npm run test:coverage and npm ru
 ## Local execution evidence
 
 `npm run dev` running on port 3000. HTTP smoke returned 200 with full document and scaffold heading. `npm run db:migrate` completed successfully against configured Neon DATABASE_URL. Driver warned that future pg major versions change sslmode=require semantics; current pinned driver treats it as verify-full. No application data seeded and no real OTP sent.
+
+## Request integration checkpoint
+
+Connected request-scoped guest/account ownership, private cache headers, Resend delivery adapter, bounded PostgreSQL pool, typed task RPC and auth HTTP route. 41 tests pass; all four current-source coverage metrics 100%; typecheck/build pass. Tests use real application/auth code with PGlite, replacing only HTTP/database/email external boundaries. Generated a local auth secret without printing it. Task UI follows next; no live email sent.
