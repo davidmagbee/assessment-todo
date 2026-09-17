@@ -2,7 +2,7 @@
 
 A private to-do workspace built with TanStack Start, React, PostgreSQL and Better Auth. Crisp monochrome surfaces, restrained violet accents, and keyboard-accessible native controls.
 
-**Delivery status:** functional locally; hosted URL and live email verification pending. [Repository](https://github.com/davidmagbee/assessment-todo). AI planning share link pending; [plan.md](plan.md) records decisions and amendments.
+**Delivery status:** functional locally; hosted URL pending; live email delivery verified by the user. [Repository](https://github.com/davidmagbee/assessment-todo). AI planning share link pending; [plan.md](plan.md) records decisions and amendments.
 
 ## Try it locally
 
@@ -63,7 +63,7 @@ Current checkpoint: **56 tests pass**; statements, branches, functions and lines
 
 Tests execute migrations and application/auth logic against isolated PGlite PostgreSQL. They cover ownership, fixed expiry, CRUD, literal search, validation, OTP replay/attempts, cookie-bearing CSRF, route rendering, URL navigation, stale edits, keyboard commands and account controls. HTTP/database/email boundaries are replaced where needed; Vitest's route integration uses a transport shim because it does not run the Start RPC compiler. Live browser smoke separately verified compiled RPC creation, reload persistence and edits against Neon. Temporary smoke data was removed.
 
-Coverage is not exhaustive correctness. Actual inbox delivery, deployed-runtime acceptance and a full production keyboard/accessibility walkthrough are still required.
+Coverage is not exhaustive correctness. User verified actual inbox delivery. Deployed-runtime acceptance and a full production keyboard/accessibility walkthrough are still required.
 
 ## Deployment
 
@@ -73,7 +73,7 @@ Neon CLI linkage targets `falling-fog-34559809` / `production`. The requested em
 
 ## Known limitations and follow-up
 
-- Live email and production deployment checks remain pending.
+- Live email delivery is user-verified; production deployment checks remain pending.
 - Current npm audit reports four moderate findings in the Drizzle Kit → esbuild dependency chain ([advisory](https://github.com/advisories/GHSA-67mh-4wv8-2f99)). An incompatible automatic downgrade was not applied.
 - Expired guest records remain stored; access expires, but scheduled data cleanup is not implemented.
 - No shared boards, task imports, pagination, undo or team permissions in this release.

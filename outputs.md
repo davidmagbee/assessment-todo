@@ -152,3 +152,7 @@ Replaced scaffold with Small Wins: monochrome/violet responsive task UI, create/
 ## Hosting preparation checkpoint
 
 Added the documented Nitro Vite adapter (pinned 3.0.260903-beta), explicit Vercel TanStack Start detection and iad1 region. Build/typecheck pass. Executed the production Node bundle locally on port 3001: HTTP 200, rendered task form, private/no-store and HttpOnly guest cookie verified. Public client JS contains none of the configured secret values. Build emits upstream use-client directive warnings; runtime smoke passes. Vercel CLI authentication remains pending. Updated README with setup, architecture, reviewer walkthrough, test boundaries and remaining limitations.
+
+## User verification update
+
+User confirmed live email is verified. This confirms delivery; no additional account-switching or production behavior inferred. Vercel browser is authenticated, but CLI whoami reports loggedIn=false/login_required. Started a fresh CLI device authorization and opened its page.
