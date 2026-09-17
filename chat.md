@@ -53,3 +53,11 @@ Accepted initial release boundary, private guest default, explicit import recomm
 ## Assistant [summary]
 
 Inspected live Blue Agilis homepage visually; dark view has black surfaces, bold white text, blue logo, violet/blue hero glow. Revised proposed direction toward monochrome with restrained accents. Proposed explicit, retry-safe guest import and email OTP, keeping auth selection unresolved. GitHub authentication succeeded; created private davidmagbee/assessment-todo and pushed committed baseline.
+
+## User [summary]
+
+Selected Better Auth email OTP and asked whether it is free. Approved monochrome/blue-violet direction. Accepted import behavior but asked how imports are organized without a schema. Invoked /grill-with-docs and asked whether grilling had been completed.
+
+## Assistant [summary]
+
+Read grill-with-docs and its grilling/domain-modeling instructions; created a glossary and recorded settled decisions. Verified Better Auth MIT license and separate email sender requirements. Prepared next decision round on list/import organization, task fields/search/deletion, guest persistence, and email-domain access. Architecture interview remains incomplete.

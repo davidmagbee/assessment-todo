@@ -74,3 +74,13 @@ Repository destination, deadline, runtime selection, GitHub authentication, depl
 - https://better-auth.com/docs/authentication/github
 
 [Unknown] Auth provider choice/email delivery access; final visual approval; later architecture decisions. No authentication, import, or coverage implementation exists yet.
+
+## Documented grilling and cost verification
+
+[Verified sources, 2026-09-17]
+- Better Auth is free/open source under MIT: https://github.com/better-auth/better-auth/blob/main/LICENSE.md (GitHub license API also returned MIT).
+- OTP sender is application supplied: https://better-auth.com/docs/plugins/email-otp
+- Resend free tier currently lists 3,000 emails/month and 100/day: https://resend.com/pricing
+- Resend sending-domain verification: https://resend.com/docs/dashboard/domains/introduction
+
+Created CONTEXT.md as a glossary, not an implementation spec. Updated current design tree. Documentation-only change; no app code/test changes. Auth, schema, email delivery, and coverage remain unimplemented.

@@ -84,3 +84,14 @@ User authorized CLI repository creation and push, with private visibility. Exist
 [Proposed design] Crisp neutral surfaces and typography, restrained blue/violet accents, visible keyboard focus and status labels, brief completion feedback with reduced-motion support. Original warm-paper proposal was a subjective approach to friendliness; company visual reference now supports revising it. No UI implemented.
 
 [Proven fact: CLI] Private repository created and baseline pushed: https://github.com/davidmagbee/assessment-todo.
+
+## Current design tree — documented grilling
+
+- Settled: initial release boundary, private guest default, optional Better Auth email OTP, explicit import, monochrome/accent direction, coverage contract.
+- Open now: one personal list versus named lists; imported-item ordering; task fields; search semantics; delete behavior; guest lifetime; sending-domain access.
+- Downstream: schema/constraints and import transaction; provider/runtime decision; auth/abuse policies; route/streaming design; test matrix; final shared-understanding confirmation.
+- Domain glossary started in CONTEXT.md. No database schema exists. Earlier interview used grilling but did not complete the exercise; grill-with-docs now explicitly invoked and applied.
+
+[Proposal] One personal list initially; imports join that list with original task dates/status preserved and deterministic newest-created-first order. Import origin is provenance rather than a new user-visible category. Any sorting/grouping choice remains a user decision.
+
+[Verified] Better Auth core is MIT-licensed. Email OTP requires an email sender. Resend is a candidate with a free tier, but a verified owned sending domain is needed for normal delivery. Hosting, database, domain, and provider costs remain separate; no guarantee of zero total operating cost.

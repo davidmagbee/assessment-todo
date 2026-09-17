@@ -15,3 +15,5 @@
 - Commit completed, validated work in atomic semantic commits. Separate unrelated tasks and record validation.
 - User requires 100% test coverage; agree and record coverage dimensions/exclusions before implementing the gate. Never report a coverage target as achieved without a report.
 - Design should be fun, clean, efficient, creative without distraction. Optional authentication belongs in initial scope; public/team boards and tagging need explicit release sequencing.
+
+- Domain vocabulary: CONTEXT.md (glossary only). Capture consequential agreed tradeoffs in docs/adr/ when warranted. Current architecture interview is tracked in plan.md.

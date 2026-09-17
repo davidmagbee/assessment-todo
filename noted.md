@@ -44,3 +44,5 @@ References: [AIHero](https://www.aihero.dev/skills), [Matt Pocock skills](https:
 - Coverage contract accepted: 100% lines/branches/functions/statements for authored application code including UI and untested source; documented exclusions for generated/vendor/declaration/nonbehavioral config files; separate end-to-end acceptance tests.
 - Authentication unresolved: user favors email accessibility, considers GitHub appropriate, and questions Google.
 - Visual preference: crisp monochrome with playful accents, informed by https://blueagilis.com/. Final proposal pending discussion.
+
+[Confirmed by user] Initial authentication: Better Auth email one-time codes. Design: crisp monochrome with blue/violet accents. Explicit task imports accepted; organization remains open. User explicitly invoked /grill-with-docs and asked whether grilling was complete.
