@@ -96,3 +96,9 @@ Verified official documentation:
 Local inspection: vercel and neonctl do not resolve on current PATH. This does not establish whether the user has accounts. Domain/DNS and account inventory questions are pending.
 
 Read-only research verified documented Start/Vercel Node, Better Auth/Drizzle PostgreSQL, and Drizzle/Neon integration. Adapter import paths differ between some current docs; implementation must verify installed exports. Sources recorded in plan.md.
+
+## Infrastructure inventory checkpoint
+
+Documentation-only update based on user-provided account references. Netlify DNS: https://app.netlify.com/teams/macuser413/dns/davidmagbee.com ; Vercel: https://vercel.com/davidmagbees-projects ; Neon: https://console.neon.tech/app/org-cool-block-43114340/projects . These links were provided by the user, not authenticated/inspected in this checkpoint.
+
+Added concrete setup sequence to plan.md. No provider resources, credentials, or DNS records created/changed. Verification: staged whitespace check; app tests not rerun for documentation-only edits.

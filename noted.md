@@ -54,3 +54,11 @@ References: [AIHero](https://www.aihero.dev/skills), [Matt Pocock skills](https:
 [Post-acceptance backlog] Add due dates, priorities, subtasks, tags, and undo or a recoverable deleted/archived list incrementally. Public/team boards remain later scope. Imports are deferred.
 
 [User context] Owns multiple domains; one has email service and an unused mailbox. Sending domain/DNS provider not chosen.
+
+## Infrastructure inventory [user-provided]
+
+- Sending domain: davidmagbee.com; DNS managed in Netlify team macuser413.
+- Existing Vercel account/team: davidmagbees-projects.
+- Existing Neon organization: org-cool-block-43114340.
+- Resend account existence not answered; do not assume none exists.
+- Account existence does not establish authenticated CLI/API access.

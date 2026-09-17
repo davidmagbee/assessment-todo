@@ -122,3 +122,16 @@ TanStack Start + Vercel Node runtime via documented Nitro integration; Neon Post
 Sources: https://tanstack.com/start/latest/docs/framework/react/guide/hosting ; https://better-auth.com/docs/adapters/drizzle ; https://orm.drizzle.team/docs/connect-neon
 
 Final behavior proposals: sign-out restores the still-valid private guest list; fixed guest expiry 30 days from creation; newest-created-first stable ordering. These are not yet confirmed.
+
+## Infrastructure setup checklist
+
+[User-provided inventory] davidmagbee.com on Netlify DNS; existing Vercel and Neon accounts.
+
+1. Confirm pending stack/guest-lifecycle defaults and Resend availability.
+2. Proposed sender: login@auth.davidmagbee.com. Verify the dedicated auth subdomain with the selected email service.
+3. Obtain exact DNS records from that service; inspect existing Netlify DNS records and add only required nonconflicting records. Preserve existing website and mailbox records.
+4. Verify sending-domain readiness. Create/use project-scoped sender credentials through secure local/environment configuration.
+5. Create isolated app/database resources in the supplied Vercel/Neon accounts once stack is settled. Configure runtime, region, environment secrets, migrations, and callback/trusted origins.
+6. Test real OTP delivery plus expiry/retry/failure behavior; never commit OTPs or secrets.
+
+[Unknown] Resend account status, DNS write access, current DNS records, and authenticated provider access. No infrastructure resources or DNS records modified in this checkpoint.

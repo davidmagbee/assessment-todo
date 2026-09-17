@@ -69,3 +69,11 @@ Asked whether Better Auth requires separate email/domain setup; owns domains but
 ## Assistant [summary]
 
 Explained auth versus outbound delivery and that a sending domain does not need a mailbox. Asked for chosen domain/DNS provider and existing Vercel/Neon/Resend accounts. Recorded revised scope and proposed minimal ownership/schema, rendering, and test boundaries; delegated read-only stack compatibility verification under grilling instructions.
+
+## User [summary]
+
+Provided davidmagbee.com Netlify DNS management link and existing Vercel and Neon account links. Did not specify whether a Resend account exists.
+
+## Assistant [summary]
+
+Recorded infrastructure inventory and setup checklist; proposed auth.davidmagbee.com as a dedicated sending subdomain. Kept provider-generated DNS values, account access, and Resend availability explicitly unresolved. No DNS or cloud-resource changes.
