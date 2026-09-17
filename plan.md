@@ -159,3 +159,9 @@ Implemented hashed guest credentials with fixed 30-day expiry. Valid credentials
 ## Authentication and provider checkpoint
 
 Better Auth email OTP factory implemented with database-backed rate limits, hashed codes, three allowed attempts and five-minute expiry. Generated rate-limit schema and second migration. Explicit CSRF/origin settings keep tests aligned with production. Route/runtime integration still pending. Resend domain now Verified; public DNS resolves all approved records. Neon signed in; assessment-todo creation form prepared for AWS North Virginia, PostgreSQL only, free plan. User asked to finish credential creation and save DATABASE_URL/RESEND_API_KEY locally. No live database migration or email delivery claimed.
+
+## Neon CLI setup — 2026-09-17
+
+User explicitly requested Neon CLI installation/login, skills, global MCP, project link, empty neon.ts policy and deployment; confirmed repository directory ~/code/assessment-todo. Installed neon 4.21.1. Linked falling-fog-34559809 / production (br-aged-truth-auv8cnig). neon deploy succeeded: no changes required; utilized service Postgres. Pulled DATABASE_URL, DATABASE_URL_UNPOOLED and NEON_BRANCH into ignored .env; .neon ignored. No application deployment or SQL migration performed in this step.
+
+Seven Neon skills installed project-locally. Exact neon mcp -y default installed globally for Codex, Cursor, VS Code and Windsurf, minting an account-wide API key (not project-scoped). Credentials remain outside Git. Added empty documented policy and pinned @neon/config 1.7.1 / @neon/env 1.4.2.

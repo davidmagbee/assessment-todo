@@ -18,3 +18,4 @@ todos.json
 .vercel/
 
 coverage/
+.neon

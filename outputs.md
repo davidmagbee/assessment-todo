@@ -128,3 +128,11 @@ Five guest-session tests run against PGlite with real migrations. They verify re
 30 tests pass; coverage statements 43/43, branches 17/17, functions 19/19, lines 41/41. Typecheck and client/server production build pass. Actual Better Auth handler and PGlite execute sign-in/replay, wrong-code exhaustion, and cookie-bearing untrusted-origin rejection; delivery callback is captured locally, not sent. Initial origin test failed because Better Auth disables origin checking in test environments by default and cookie-less requests do not exercise its cookie-based CSRF check. Explicitly enabled protections and corrected the test to model cookie-bearing CSRF. Source evidence: installed better-auth/dist/context/create-context.mjs and api/middlewares/origin-check.mjs (1.7.5).
 
 Resend domain UI reports Verified (domain ID 0677dbaa-e874-4e94-8877-eb19b51b4d6a); DNS independently resolves DKIM/SPF/MX. API key and Neon connection setup remain pending. No secrets printed or committed. UI is still the scaffold; current coverage does not imply finished acceptance.
+
+## Neon CLI setup — 2026-09-17
+
+User explicitly requested Neon CLI installation/login, skills, global MCP, project link, empty neon.ts policy and deployment; confirmed repository directory ~/code/assessment-todo. Installed neon 4.21.1. Linked falling-fog-34559809 / production (br-aged-truth-auv8cnig). neon deploy succeeded: no changes required; utilized service Postgres. Pulled DATABASE_URL, DATABASE_URL_UNPOOLED and NEON_BRANCH into ignored .env; .neon ignored. No application deployment or SQL migration performed in this step.
+
+Seven Neon skills installed project-locally. Exact neon mcp -y default installed globally for Codex, Cursor, VS Code and Windsurf, minting an account-wide API key (not project-scoped). Credentials remain outside Git. Added empty documented policy and pinned @neon/config 1.7.1 / @neon/env 1.4.2.
+
+Validation after Neon setup: npm run typecheck, npm run test:coverage and npm run build pass. 30 tests; statements/branches/functions/lines each 100% for current authored src. Existing four moderate dependency audit findings remain. Neon setup does not host the frontend or execute Drizzle migrations.
