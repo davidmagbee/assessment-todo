@@ -112,3 +112,9 @@ Added concrete setup sequence to plan.md. No provider resources, credentials, or
 - Installed stable drizzle-orm 0.45.2 and drizzle-kit 0.31.10, Better Auth/adapter 1.7.5; resolved node-postgres, adapter, plugin, and TanStack integration exports.
 - npm audit reports four moderate dependency findings along drizzle-kit → esm-loader → core-utils → esbuild. This also appears with --omit=dev because Better Auth references drizzle-kit. Advisory: https://github.com/advisories/GHSA-67mh-4wv8-2f99 . Suggested automatic fix downgrades Drizzle Kit incompatibly; not applied. No affected esbuild development server intentionally started.
 - Schema, database connection, auth behavior, app UI, and deployed acceptance remain incomplete.
+
+## Repository and DNS checkpoint
+
+Verified 22 tests passing, all authored coverage metrics 100%, typecheck/build pass. Generated auth schema excluded under approved generated-code exclusion; migrations executed against isolated PGlite. Tests cover account/guest isolation, unauthorized update/delete, literal search, status filtering, validation and ownership constraints.
+
+Resend domain ID: 0677dbaa-e874-4e94-8877-eb19b51b4d6a. DNS added with approval: TXT resend._domainkey.auth (issued key), TXT send.auth (v=spf1 include:amazonses.com ~all), MX send.auth (feedback-smtp.us-east-1.amazonses.com, priority 10), TTL 60. Vercel warned about auth-subdomain wildcard override; scoped exception confirmed. Existing explicit root/www portfolio configuration untouched. Public DNS confirms records. Resend DKIM verified; sending pending at observation. No API key created or test email sent.

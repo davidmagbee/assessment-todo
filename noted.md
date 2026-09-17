@@ -64,3 +64,5 @@ References: [AIHero](https://www.aihero.dev/skills), [Matt Pocock skills](https:
 - Account existence does not establish authenticated CLI/API access.
 
 [Confirmed user decisions] Proceed with Drizzle stack; user primarily knows Prisma. Sign-out restores valid guest list; fixed 30-day expiry and newest-created-first order accepted. Sender login@auth.davidmagbee.com accepted. Resend account created; onboarding incomplete.
+
+[Verified correction] Public DNS and Vercel UI establish that Vercel, not Netlify, manages active davidmagbee.com DNS. User explicitly approved three Resend DNS additions.

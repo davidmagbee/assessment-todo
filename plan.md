@@ -145,3 +145,9 @@ Initial slice: pinned dependencies, test/coverage tooling, public task-input and
 Implementation limits: title 200 characters, description 5000, URL query 200; trim surrounding whitespace, new status defaults to todo. Malformed URL values fall back to all/no search. These are implementation defaults, adjustable without changing core scope.
 
 Coverage includes every authored src TS/TSX file, excludes only generated route tree and declarations. Current report covers the small scaffold/input slice; it is not proof of full app behavior or end-to-end coverage.
+
+## Resume checkpoint
+
+Interrupted push had completed; main matched GitHub at 66de197 with no pending process. Resend subdomain created and approved DKIM/SPF/MX records added in Vercel. Public DNS resolves all three; Resend DKIM verified, full sending status pending at this checkpoint.
+
+Database schema and first SQL migration generated; task repository CRUD and combined search/status implemented and tested with isolated PGlite PostgreSQL. Guest identity/expiry, live DB, auth runtime, server functions, UI and deployment remain. Neon browser login requested.

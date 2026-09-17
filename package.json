@@ -12,7 +12,10 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "auth:schema": "npx auth@1.7.5 generate --config scripts/auth-schema.config.ts --adapter drizzle --dialect postgresql --output src/db/auth-schema.gen.ts --yes"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "1.7.5",
@@ -27,6 +30,7 @@
     "zod": "4.6.5"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
     "@tanstack/router-cli": "1.167.38",
     "@types/node": "22.20.3",
     "@types/pg": "8.23.1",

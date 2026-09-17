@@ -7,7 +7,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/routeTree.gen.ts', 'src/**/*.d.ts'],
+      exclude: ['src/routeTree.gen.ts', 'src/db/auth-schema.gen.ts', 'src/**/*.d.ts'],
       reporter: ['text', 'html', 'json-summary'],
       thresholds: { lines: 100, statements: 100, functions: 100, branches: 100 },
     },

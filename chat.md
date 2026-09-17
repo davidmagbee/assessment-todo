@@ -85,3 +85,11 @@ Approved proposed stack, guest switch/expiry/order defaults, and login@auth.davi
 ## Assistant [summary]
 
 Started implementation using TDD at the agreed input/task/UI boundaries. Installed stable database/auth dependencies and coverage tooling; added task validation and safe URL-filter contracts. Verified SSR through the real router. Temporary untested source correctly failed coverage gate, then was removed. Inspected Resend browser session: login required; asked user to sign in. Added ADRs and Drizzle orientation.
+
+## User [summary]
+
+Reported Resend login and asked to resume unfinished work after interruption. Logged into Vercel and explicitly approved adding Resend DKIM/SPF/MX records.
+
+## Assistant [summary]
+
+Verified completed push/clean state, created auth.davidmagbee.com in Resend, found authoritative DNS at Vercel, obtained approval, added exact issued records, and confirmed public resolution. Generated Better Auth schema and SQL migration; implemented/tested owner-scoped task repository. Requested Neon login while continuing local work.
