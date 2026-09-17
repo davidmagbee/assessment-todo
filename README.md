@@ -2,7 +2,7 @@
 
 A private to-do workspace built with TanStack Start, React, PostgreSQL and Better Auth. Crisp monochrome surfaces, restrained violet accents, and keyboard-accessible native controls.
 
-**Delivery status:** functional locally; hosted URL pending; live email delivery verified by the user. [Repository](https://github.com/davidmagbee/assessment-todo). AI planning share link pending; [plan.md](plan.md) records decisions and amendments.
+**Live:** [assessment-todo.vercel.app](https://assessment-todo.vercel.app) · [Repository](https://github.com/davidmagbee/assessment-todo) · [Codex-assisted planning summary](https://gist.github.com/davidmagbee/230e378be4f265ddb51c6adc078e93aa). The planning link is a sanitized retrospective document, not a native chat transcript. Local email delivery is user-verified; hosted sign-in verification is pending.
 
 ## Try it locally
 
@@ -63,9 +63,11 @@ Current checkpoint: **56 tests pass**; statements, branches, functions and lines
 
 Tests execute migrations and application/auth logic against isolated PGlite PostgreSQL. They cover ownership, fixed expiry, CRUD, literal search, validation, OTP replay/attempts, cookie-bearing CSRF, route rendering, URL navigation, stale edits, keyboard commands and account controls. HTTP/database/email boundaries are replaced where needed; Vitest's route integration uses a transport shim because it does not run the Start RPC compiler. Live browser smoke separately verified compiled RPC creation, reload persistence and edits against Neon. Temporary smoke data was removed.
 
-Coverage is not exhaustive correctness. User verified actual inbox delivery. Deployed-runtime acceptance and a full production keyboard/accessibility walkthrough are still required.
+Coverage is not exhaustive correctness. User verified local inbox delivery. Production smoke checks cover CRUD, reload persistence, combined search/status, Cmd+K palette navigation and owner isolation. Hosted inbox/account verification and a broader accessibility audit remain pending.
 
 ## Deployment
+
+Local Node is pinned to 24.21.0; the supported runtime range is >=24.19.0 <25 after Vercel successfully built and ran the app on Node 24.19.0.
 
 Vercel Node target via Nitro's Vite plugin; explicit `tanstack-start` framework detection and `iad1` region in [vercel.json](vercel.json). Configure server-only environment values before deploying. Run migrations deliberately; application startup does not mutate schema. Use separate databases/branches for previews before enabling preview writes.
 
@@ -73,7 +75,7 @@ Neon CLI linkage targets `falling-fog-34559809` / `production`. The requested em
 
 ## Known limitations and follow-up
 
-- Live email delivery is user-verified; production deployment checks remain pending.
+- Local email delivery is user-verified. Hosted email/account switching awaits user confirmation; production guest-flow smoke checks pass.
 - Current npm audit reports four moderate findings in the Drizzle Kit → esbuild dependency chain ([advisory](https://github.com/advisories/GHSA-67mh-4wv8-2f99)). An incompatible automatic downgrade was not applied.
 - Expired guest records remain stored; access expires, but scheduled data cleanup is not implemented.
 - No shared boards, task imports, pagination, undo or team permissions in this release.

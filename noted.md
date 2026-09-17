@@ -94,3 +94,9 @@ Added the documented Nitro Vite adapter (pinned 3.0.260903-beta), explicit Verce
 ## User verification update
 
 User confirmed live email is verified. This confirms delivery; no additional account-switching or production behavior inferred. Vercel browser is authenticated, but CLI whoami reports loggedIn=false/login_required. Started a fresh CLI device authorization and opened its page.
+
+## Production release checkpoint
+
+Created and Git-linked Vercel assessment-todo under the authorized account. Configured production-only server environment values; production uses a separately generated auth secret. Deployed successfully to https://assessment-todo.vercel.app . Public unauthenticated HTTP 200, private/no-store, Secure/HttpOnly/SameSite=Lax cookie verified. Browser confirmed create/reload/edit, combined description-search/status and Cmd+K → filtered command → keyboard status navigation. Real hosted RPC verified create/update, cross-owner delete rejection and own deletion. Removed exact smoke fixtures afterward. Hosted inbox/account switching awaits user confirmation; local email already user-verified.
+
+Vercel runs Node 24.19.0; adjusted package engine minimum from 24.21.0 to that successfully exercised runtime while keeping local .nvmrc pin. Published sanitized Codex-assisted retrospective planning summary at https://gist.github.com/davidmagbee/230e378be4f265ddb51c6adc078e93aa after stating the recommended default; it is not a native conversation transcript. Repository remains private as requested.
