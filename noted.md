@@ -86,3 +86,7 @@ Connected request-scoped guest/account ownership, private cache headers, Resend 
 ## Functional local application checkpoint
 
 Replaced scaffold with Small Wins: monochrome/violet responsive task UI, create/edit forms, confirmed deletion, URL search/status filters, native command palette (Cmd/Ctrl+K; Tab/Enter/Escape), email OTP controls and safe route recovery screens. Account switches remount the streamed list boundary. 56 tests pass; all four coverage metrics 100%; typecheck/build pass. Browser smoke created a task through RPC, verified reload persistence and updated its description; removed only that exact assistant-created fixture afterward. Live email delivery awaits user check. Vercel CLI authentication requested; hosted deployment remains pending.
+
+## Hosting preparation checkpoint
+
+Added the documented Nitro Vite adapter (pinned 3.0.260903-beta), explicit Vercel TanStack Start detection and iad1 region. Build/typecheck pass. Executed the production Node bundle locally on port 3001: HTTP 200, rendered task form, private/no-store and HttpOnly guest cookie verified. Public client JS contains none of the configured secret values. Build emits upstream use-client directive warnings; runtime smoke passes. Vercel CLI authentication remains pending. Updated README with setup, architecture, reviewer walkthrough, test boundaries and remaining limitations.

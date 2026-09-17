@@ -1,0 +1,11 @@
+# Deploy application inputs only; local credentials and private workflow records stay local.
+.env
+.env.*
+!.env.example
+.neon
+.agents
+.git
+coverage
+chat.md
+noted.md
+outputs.md
