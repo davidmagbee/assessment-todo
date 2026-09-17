@@ -37,3 +37,11 @@ Asked to repeat unresolved questions. Requested atomic semantic commits and stro
 ## Assistant [summary]
 
 Recorded requirements without resolving ambiguous release scope, guest behavior, authentication method, or coverage exclusions by assumption. Prepared atomic setup commits and a focused next decision round.
+
+## User [summary]
+
+Prefers creating GitHub repository through CLI from existing local work. Selected private visibility during development.
+
+## Assistant [summary]
+
+Committed scaffold, skills, and project documentation separately. GitHub CLI reported invalid stored credentials; started device login and supplied activation instructions. No remote exists yet.

@@ -68,3 +68,7 @@ Source: user's latest instructions.
 [Inference] Shared writes and team access introduce permission decisions that an isolated list does not require; resolving release boundaries now reduces rework risk under the fixed deadline.
 
 [Next questions] Initial release boundary; guest default; initial sign-in method; guest-to-account migration; coverage contract; visual direction.
+
+## GitHub publication checkpoint
+
+User authorized CLI repository creation and push, with private visibility. Existing gh token is invalid; browser device re-authentication started. Remote creation/push remain pending login.

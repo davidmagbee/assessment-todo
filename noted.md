@@ -32,3 +32,5 @@ References: [AIHero](https://www.aihero.dev/skills), [Matt Pocock skills](https:
 - Add tagging for organization/filtering; implement status filtering first.
 - Explore extra functionality immediately after acceptance criteria pass and initial deployment succeeds.
 - Require 100% test coverage; coverage dimensions and legitimate exclusions need agreement.
+
+[Proven fact: user decision] Create the GitHub repository through the CLI; keep it private during development.

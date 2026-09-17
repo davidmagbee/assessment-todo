@@ -53,3 +53,12 @@ Repository destination, deadline, runtime selection, GitHub authentication, depl
 [Process decision] Split baseline into application scaffold, vendored skills, and project workflow/requirements commits. Commit coherent validated changes going forward; do not mix unrelated features. No remote push authorized in this step.
 
 [Unknown] No test suite or coverage report exists yet; 100% coverage is a requested target, not a current result.
+
+## Commit and GitHub checkpoint [local evidence]
+
+- 2c33c45: chore(app): scaffold TanStack Start with pinned toolchain
+- 10e3e6f: chore(skills): install project-local Matt Pocock skills
+- a43f809: docs(project): define assessment scope and atomic delivery workflow
+- Removed trailing blank line in starter CSS when staged whitespace check caught it.
+- All staged whitespace checks passed before those commits; working tree clean after commits.
+- gh auth status failed for davidmagbee: stored keyring token invalid. Device login initiated; remote creation and push not completed.
