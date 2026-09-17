@@ -16,3 +16,5 @@ todos.json
 .env.*
 !.env.example
 .vercel/
+
+coverage/
