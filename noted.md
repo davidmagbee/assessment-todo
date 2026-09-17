@@ -68,3 +68,5 @@ References: [AIHero](https://www.aihero.dev/skills), [Matt Pocock skills](https:
 [Verified correction] Public DNS and Vercel UI establish that Vercel, not Netlify, manages active davidmagbee.com DNS. User explicitly approved three Resend DNS additions.
 
 [Implementation checkpoint] Guest lifetime follows confirmed fixed 30-day policy; resolving a valid token does not extend its expiry. No new user preference inferred.
+
+[Verified infrastructure] Resend marks auth.davidmagbee.com Verified. Neon browser session authenticated. Sender remains login@auth.davidmagbee.com; no mailbox purchase needed for this configured sending domain.

@@ -1,6 +1,6 @@
 # Execution plan
 
-Status: draft; architecture review pending. Source of requirements: user-provided assessment, 2026-09-17.
+Status: architecture agreed; implementation in progress. Historical checkpoints below are chronological; latest amendments supersede earlier proposals. Source of requirements: user-provided assessment, 2026-09-17.
 
 ## Required outcomes [proven facts: assessment text]
 
@@ -155,3 +155,7 @@ Database schema and first SQL migration generated; task repository CRUD and comb
 ## Guest identity checkpoint
 
 Implemented hashed guest credentials with fixed 30-day expiry. Valid credentials resume the same identity without renewal; expired, absent, malformed, and unknown credentials create a fresh identity. HTTP cookie integration remains next.
+
+## Authentication and provider checkpoint
+
+Better Auth email OTP factory implemented with database-backed rate limits, hashed codes, three allowed attempts and five-minute expiry. Generated rate-limit schema and second migration. Explicit CSRF/origin settings keep tests aligned with production. Route/runtime integration still pending. Resend domain now Verified; public DNS resolves all approved records. Neon signed in; assessment-todo creation form prepared for AWS North Virginia, PostgreSQL only, free plan. User asked to finish credential creation and save DATABASE_URL/RESEND_API_KEY locally. No live database migration or email delivery claimed.

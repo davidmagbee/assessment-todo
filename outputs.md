@@ -122,3 +122,9 @@ Resend domain ID: 0677dbaa-e874-4e94-8877-eb19b51b4d6a. DNS added with approval:
 ## Guest identity verification
 
 Five guest-session tests run against PGlite with real migrations. They verify resume, unchanged expiry, exact expiry boundary and rejected credentials through the resolver interface. Token generation uses node:crypto; only SHA-256 hashes are persisted. Combined current suite passes; HTTP cookie integration remains unimplemented.
+
+## Authentication verification
+
+30 tests pass; coverage statements 43/43, branches 17/17, functions 19/19, lines 41/41. Typecheck and client/server production build pass. Actual Better Auth handler and PGlite execute sign-in/replay, wrong-code exhaustion, and cookie-bearing untrusted-origin rejection; delivery callback is captured locally, not sent. Initial origin test failed because Better Auth disables origin checking in test environments by default and cookie-less requests do not exercise its cookie-based CSRF check. Explicitly enabled protections and corrected the test to model cookie-bearing CSRF. Source evidence: installed better-auth/dist/context/create-context.mjs and api/middlewares/origin-check.mjs (1.7.5).
+
+Resend domain UI reports Verified (domain ID 0677dbaa-e874-4e94-8877-eb19b51b4d6a); DNS independently resolves DKIM/SPF/MX. API key and Neon connection setup remain pending. No secrets printed or committed. UI is still the scaffold; current coverage does not imply finished acceptance.
