@@ -136,3 +136,7 @@ User explicitly requested Neon CLI installation/login, skills, global MCP, proje
 Seven Neon skills installed project-locally. Exact neon mcp -y default installed globally for Codex, Cursor, VS Code and Windsurf, minting an account-wide API key (not project-scoped). Credentials remain outside Git. Added empty documented policy and pinned @neon/config 1.7.1 / @neon/env 1.4.2.
 
 Validation after Neon setup: npm run typecheck, npm run test:coverage and npm run build pass. 30 tests; statements/branches/functions/lines each 100% for current authored src. Existing four moderate dependency audit findings remain. Neon setup does not host the frontend or execute Drizzle migrations.
+
+## Local execution evidence
+
+`npm run dev` running on port 3000. HTTP smoke returned 200 with full document and scaffold heading. `npm run db:migrate` completed successfully against configured Neon DATABASE_URL. Driver warned that future pg major versions change sslmode=require semantics; current pinned driver treats it as verify-full. No application data seeded and no real OTP sent.
