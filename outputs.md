@@ -62,3 +62,15 @@ Repository destination, deadline, runtime selection, GitHub authentication, depl
 - Removed trailing blank line in starter CSS when staged whitespace check caught it.
 - All staged whitespace checks passed before those commits; working tree clean after commits.
 - gh auth status failed for davidmagbee: stored keyring token invalid. Device login initiated; remote creation and push not completed.
+
+## GitHub and design checkpoint
+
+[Proven facts: CLI] gh authentication succeeded; gh repo create davidmagbee/assessment-todo --private --source=. --remote=origin --push succeeded. Repository visibility verified PRIVATE; main tracks origin/main.
+
+[Proven fact: direct browser observation] Blue Agilis homepage dark view uses black background, bold white type, blue branding, and violet/blue hero glow: https://blueagilis.com/. Observation is limited to the viewed theme/viewport.
+
+[Verified capabilities, not selected dependencies] Better Auth documents email OTP with an application-provided email sender and GitHub OAuth:
+- https://better-auth.com/docs/plugins/email-otp
+- https://better-auth.com/docs/authentication/github
+
+[Unknown] Auth provider choice/email delivery access; final visual approval; later architecture decisions. No authentication, import, or coverage implementation exists yet.

@@ -34,3 +34,13 @@ References: [AIHero](https://www.aihero.dev/skills), [Matt Pocock skills](https:
 - Require 100% test coverage; coverage dimensions and legitimate exclusions need agreement.
 
 [Proven fact: user decision] Create the GitHub repository through the CLI; keep it private during development.
+
+## Confirmed release decisions
+
+[Proven facts: user answers]
+- Initial release: assessment criteria, optional authentication, private account and guest lists. Public boards, teams, tags follow successful deployment.
+- Guest default is private; future public participation is explicit.
+- Accept explicit guest import recommendation; user asked for detailed UX.
+- Coverage contract accepted: 100% lines/branches/functions/statements for authored application code including UI and untested source; documented exclusions for generated/vendor/declaration/nonbehavioral config files; separate end-to-end acceptance tests.
+- Authentication unresolved: user favors email accessibility, considers GitHub appropriate, and questions Google.
+- Visual preference: crisp monochrome with playful accents, informed by https://blueagilis.com/. Final proposal pending discussion.

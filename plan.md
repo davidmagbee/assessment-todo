@@ -72,3 +72,15 @@ Source: user's latest instructions.
 ## GitHub publication checkpoint
 
 User authorized CLI repository creation and push, with private visibility. Existing gh token is invalid; browser device re-authentication started. Remote creation/push remain pending login.
+
+## Amendment — initial release boundary accepted
+
+[Decided] Release assessment CRUD/search/status/palette with optional auth, private account lists, and private guest default. Public boards, teams, and tags are post-deployment work. Coverage contract accepted as proposed; coverage not yet measured.
+
+[Proposed guest import] After sign-in, show guest task count and destination account; offer Import tasks or Not now. Transfer only tasks owned by the current verified guest session, preserve titles/status/timestamps, retain existing account tasks, and make retries idempotent. Revoke guest access to transferred tasks only after successful transaction; failure preserves guest tasks. Same-title tasks are not automatically deduplicated. Detailed implementation awaits architecture agreement.
+
+[Proposed auth] Email one-time code for accessibility; optional GitHub sign-in if included deliberately. Email requires functioning delivery; provider/account-linking decisions remain open. Do not select providers for perceived impressiveness alone.
+
+[Proposed design] Crisp neutral surfaces and typography, restrained blue/violet accents, visible keyboard focus and status labels, brief completion feedback with reduced-motion support. Original warm-paper proposal was a subjective approach to friendliness; company visual reference now supports revising it. No UI implemented.
+
+[Proven fact: CLI] Private repository created and baseline pushed: https://github.com/davidmagbee/assessment-todo.
