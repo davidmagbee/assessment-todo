@@ -101,3 +101,17 @@ test('date-only deadlines round-trip without timezone conversion and can be clea
   }
   expect((await repository.update(owner,task.id,{title:'Deadline',dueDate:null}))?.dueDate).toBeNull()
 })
+
+test('user-defined tags normalize and support combined owner-scoped text, tag and status filters', async () => {
+  const owner = {kind:'user' as const,id:'alice'}
+  const task = await repository.create(owner,{title:'Categorized',tags:[' Work ', 'WORK','100%','client_a'],status:'in_progress'})
+  expect(task.tags).toEqual(['work','100%','client_a'])
+  await repository.create({kind:'user',id:'bob'},{title:'Other owner',tags:['work'],status:'in_progress'})
+  expect((await repository.list(owner,{q:'WOR',tag:' WORK ',status:'in_progress'})).map(t => t.id)).toEqual([task.id])
+  expect(await repository.list(owner,{q:'WOR',tag:'work',status:'done'})).toEqual([])
+  expect(await repository.list(owner,{q:'',tag:'wor'})).toEqual([])
+  expect((await repository.list(owner,{q:'100%',tag:'client_a'})).map(t => t.id)).toEqual([task.id])
+  expect(await repository.list(owner,{q:'100_'})).toEqual([])
+  expect((await repository.update(owner,task.id,{title:'Categorized',tags:[]}))?.tags).toEqual([])
+  expect(await repository.list(owner,{tag:'work'})).toEqual([])
+})

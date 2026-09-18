@@ -32,14 +32,14 @@ Never prefix these values with `VITE_`. `.env` and `.neon` are ignored by Git an
 
 ## Reviewer walkthrough
 
-1. Add a title, optional description and status. Reload to verify persistence.
-2. Expand a task to edit its fields or delete it. Cancel deletion to retain it.
-3. Search title/description; combine with To-do, In progress or Done. Filters live in the URL, including browser history.
-4. Press **Cmd+K / Ctrl+K** to open commands. Search actions; Tab between them, Enter to select, Escape to close. Commands focus creation/search or select a status.
+1. Add a title, optional description, status, priority, due date and custom tags. Reload to verify persistence.
+2. Expand a task to edit its fields or delete it. Successful saves collapse the editor; failures preserve input. Cancel deletion to retain it.
+3. Search title/description/tags; combine with an exact tag and To-do, In progress or Done. Filters live in the URL, including browser history.
+4. Press **Cmd+K / Ctrl+K** to open commands. Use the displayed Alt/Option shortcuts directly, or Tab/Enter; Escape closes. Toggle outside-palette shortcuts on to use them without opening commands. Commands focus creation/search or select a status.
 5. Sign in with an email code to switch to a personal account list. Sign out to return to the still-valid guest list.
 6. Use another browser profile to check that tasks remain isolated.
 
-New identities start empty. Guest credentials expire **30 days after creation**, without sliding renewal. Signing in never imports guest tasks. Deletion is permanent after confirmation; undo/trash, teams, public boards, tags and imports are deferred.
+New identities start empty. Guest credentials expire **30 days after creation**, without sliding renewal. Signing in never imports guest tasks. Deletion is permanent after confirmation; undo/trash, teams, public boards and imports are deferred.
 
 ## Architecture
 
@@ -61,7 +61,7 @@ npm run test:coverage
 npm run build
 ```
 
-Current checkpoint: **56 tests pass**; statements, branches, functions and lines each **100%** for authored `src` TypeScript/TSX. The gate includes unimported source. Exclusions: generated route tree, generated Better Auth schema and declarations. Configuration and dependency code are outside this application-source metric.
+Current checkpoint: **70 tests pass**; statements, branches, functions and lines each **100%** for authored `src` TypeScript/TSX. The gate includes unimported source. Exclusions: generated route tree, generated Better Auth schema and declarations. Configuration and dependency code are outside this application-source metric.
 
 Tests execute migrations and application/auth logic against isolated PGlite PostgreSQL. They cover ownership, fixed expiry, CRUD, literal search, validation, OTP replay/attempts, cookie-bearing CSRF, route rendering, URL navigation, stale edits, keyboard commands and account controls. HTTP/database/email boundaries are replaced where needed; Vitest's route integration uses a transport shim because it does not run the Start RPC compiler. Live browser smoke separately verified compiled RPC creation, reload persistence and edits against Neon. Temporary smoke data was removed.
 
@@ -98,3 +98,5 @@ Open with Cmd/Ctrl+K. Alt/Option+N focuses the new-task title; F focuses search;
 Priority is optional: None (default), Low, Medium or High. Set it when creating or editing a task; it appears beneath the title. Priority does not change the newest-first list order. Run committed migrations before deploying the updated application.
 
 Due dates are optional calendar dates (YYYY-MM-DD), with no time zone or notification semantics. Set or clear one in the task form; dates display consistently across time zones. Existing tasks have no due date.
+
+Tags are user-defined: enter comma-separated labels (up to 10 entries, 32 characters each). Spaces at the ends are trimmed, case is normalized to lowercase, and duplicates are removed. Labels cannot contain commas or line breaks. Leave blank to remove all tags. Search matches literal substrings across titles, descriptions and tags; the optional tag field requires an exact normalized label and combines with status/text filters. Tags live on each private task as a bounded array; there is no shared category catalog.

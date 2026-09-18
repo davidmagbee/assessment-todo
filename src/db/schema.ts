@@ -23,6 +23,8 @@ export const tasks = pgTable('task', {
   status: taskStatus('status').notNull().default('todo'),
   priority: taskPriority('priority').notNull().default('none'),
   dueDate: date('due_date', { mode: 'string' }),
+  // Bounded per-task labels need no global category catalog or shared ownership.
+  tags: text('tags').array().notNull().default(sql`'{}'::text[]`),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 }, (table) => [

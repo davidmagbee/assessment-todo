@@ -36,8 +36,9 @@ export function createTaskRepository(db: TaskDatabase) {
       const search = taskSearch.parse(input)
       return db.select().from(tasks).where(and(scope(owner),
         search.status === 'all' ? undefined : eq(tasks.status, search.status),
+        search.tag ? sql`${search.tag} = ANY(${tasks.tags})` : undefined,
         // strpos treats % and _ literally; bound parameters prevent SQL interpolation.
-        sql`(strpos(lower(${tasks.title}), lower(${search.q})) > 0 OR strpos(lower(${tasks.description}), lower(${search.q})) > 0)`,
+        sql`(strpos(lower(${tasks.title}), lower(${search.q})) > 0 OR strpos(lower(${tasks.description}), lower(${search.q})) > 0 OR EXISTS (SELECT 1 FROM unnest(${tasks.tags}) AS label WHERE strpos(lower(label), lower(${search.q})) > 0))`,
       )).orderBy(desc(tasks.createdAt), desc(tasks.id))
     },
   }

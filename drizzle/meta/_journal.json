@@ -29,6 +29,13 @@
       "when": 1789742063571,
       "tag": "0003_secret_wong",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1789742166298,
+      "tag": "0004_faulty_human_fly",
+      "breakpoints": true
     }
   ]
 }

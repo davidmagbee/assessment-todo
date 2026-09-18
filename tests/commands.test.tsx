@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, expect, test, vi } from 'vitest'
 import { Commands } from '../src/ui/commands'
-afterEach(cleanup)
+afterEach(() => { cleanup(); localStorage.clear() })
 test('command palette opens by shortcut and filters actions before selection', async () => {
   HTMLDialogElement.prototype.showModal = function () { this.open = true }
   HTMLDialogElement.prototype.close = function () { this.open = false }

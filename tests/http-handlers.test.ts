@@ -25,7 +25,7 @@ beforeAll(async () => {
 afterAll(async () => { vi.unstubAllEnvs(); await client.close() })
 test('HTTP task operations retain cookies, prohibit shared caching and isolate strangers', async () => {
   const { readWorkspace } = await import('../src/server/handlers.server')
-  const first = await readWorkspace({data: {q: '', status: 'all'}})
+  const first = await readWorkspace({data: {q: '', status: 'all', tag: ''}})
   expect(first.viewer.kind).toBe('guest')
   expect(await first.tasks).toEqual([])
   expect(http.response.get('Cache-Control')).toBe('private, no-store')
@@ -35,13 +35,13 @@ test('HTTP task operations retain cookies, prohibit shared caching and isolate s
 test('the browser can create and update only its own tasks', async () => {
   const { readWorkspace, saveTask } = await import('../src/server/handlers.server')
   http.cookie = undefined
-  await (await readWorkspace({data: {q: '', status: 'all'}})).tasks
+  await (await readWorkspace({data: {q: '', status: 'all', tag: ''}})).tasks
   http.cookie = http.setCookie.mock.calls[0][1]
   const task = await saveTask({data: { title: 'Ship the assessment', description: '', status: 'todo' }})
   expect(task!.title).toBe('Ship the assessment')
   const updated = await saveTask({data: {id: task!.id, title: 'Ship it', description: 'One step closer', status: 'in_progress'}})
   expect(updated!.status).toBe('in_progress')
-  expect(await (await readWorkspace({data: {q: 'closer', status: 'in_progress'}})).tasks).toEqual([updated])
+  expect(await (await readWorkspace({data: {q: 'closer', status: 'in_progress', tag: ''}})).tasks).toEqual([updated])
   http.cookie = undefined
   expect(await saveTask({data: {id: task!.id, title: 'Hijacked', description: '', status: 'done'}})).toBeNull()
 })
@@ -49,7 +49,7 @@ test('the browser can create and update only its own tasks', async () => {
 test('deletion is owner-scoped and repeated deletion reports missing', async () => {
   const { readWorkspace, saveTask, deleteTask } = await import('../src/server/handlers.server')
   http.cookie = undefined
-  await (await readWorkspace({data: {q: '', status: 'all'}})).tasks
+  await (await readWorkspace({data: {q: '', status: 'all', tag: ''}})).tasks
   const ownerCookie = http.setCookie.mock.calls[0][1]
   http.cookie = ownerCookie
   const task = await saveTask({data: {title: 'Disposable fixture'}})

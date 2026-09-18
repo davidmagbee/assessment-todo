@@ -73,3 +73,6 @@ kbd{font:inherit;background:#ecebf0;border-radius:4px;padding:3px 5px;margin-lef
 
 /* Metadata sits below the title so the compact row stays scannable on narrow screens. */
 .task-meta{display:block;font-size:11px;font-weight:400;margin-top:6px;color:var(--muted)}.priority-high{color:#a03e4a}.priority-medium{color:#7a5c20}.form-bottom{flex-wrap:wrap}
+
+/* Tag labels wrap rather than widening the task or search toolbar. */
+.task-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}.tag{font-size:10px;padding:3px 6px;border-radius:4px;background:#f1eff8;color:#5e5483;overflow-wrap:anywhere}.task-form small{font-size:11px;color:var(--muted);line-height:1.5}form[role=search]{flex-wrap:wrap}form[role=search] input{min-width:130px;flex:1}

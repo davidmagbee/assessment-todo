@@ -149,3 +149,7 @@ Added None/Low/Medium/High priority to validation, PostgreSQL, create/edit forms
 ## Calendar due dates — 2026-09-18
 
 Added optional date-only deadlines to PostgreSQL, validation, forms and closed task summaries. Strings remain YYYY-MM-DD throughout: no timezone conversion, scheduling or reminders. Existing tasks have no deadline. Tests cover leap day round-trip, invalid dates, setting and clearing dates. Validation: 65 tests; four coverage metrics 100%; typecheck passes. Priority and due-date additive migrations applied successfully to linked Neon production before application release.
+
+## User-defined searchable tags — 2026-09-18
+
+Added comma-separated personal labels (up to 10 entries, 32 characters each), trimmed/lowercased/deduplicated. Empty form separators are ignored; invalid values show a specific validation message without losing input. Tags are a bounded PostgreSQL text array attached to each owned task, not a global category catalog. General search matches title, description or tag substrings; optional exact-tag filter combines with text and status in validated URL state. Existing tasks default to an empty tag array. Migration applied successfully to Neon before release. Validation: 70 tests; statements 231/231, branches 101/101, functions 80/80, lines 186/186; typecheck/build pass. Router integration covers all metadata and combined filters.
