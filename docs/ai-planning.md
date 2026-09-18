@@ -1,6 +1,6 @@
 # Small Wins: planning with Codex
 
-This is a sanitized, retrospective summary of the actual planning conversation and implementation checkpoints on September 17, 2026. It was prepared with Codex. It is **not a verbatim transcript or a native conversation share**. Account details, credentials, local paths and authentication setup logs are omitted.
+This is a sanitized, retrospective summary of the actual planning conversation and implementation checkpoints on September 17–18, 2026. It was prepared with Codex. It is **not a verbatim transcript or a native conversation share**. Account details, credentials, local paths and authentication setup logs are omitted.
 
 ## Assessment requirements [provided by the user]
 
@@ -47,7 +47,7 @@ The technical prompt additionally calls for file-based routing, validated search
 
 Tests exercise public validation, repository, identity, HTTP-handler, UI and router boundaries. PGlite runs committed PostgreSQL migrations in isolated test databases. Auth logic executes for real; email delivery is captured at the provider boundary in automated tests. Route tests use a transport shim because Vitest does not run Start's RPC compiler, so real browser and hosted RPC checks supplement them.
 
-The current automated checkpoint is 56 passing tests with all four authored-source coverage metrics at 100%. Exclusions are generated route/schema files and declarations. Typecheck and production build pass. Live checks separately verified creation, reload persistence, edits, owner-scoped deletion, command palette navigation and private HTTPS cookie/cache behavior. The user verified email delivery locally; production inbox/account acceptance still needs its own check.
+The current automated checkpoint is 72 passing tests with all four authored-source coverage metrics at 100%. Exclusions are generated route/schema files and declarations. Typecheck and production build pass. Live checks separately verified creation, reload persistence, edits, owner-scoped deletion, command palette navigation and private HTTPS cookie/cache behavior. The user verified email delivery locally; production inbox/account acceptance still needs its own check.
 
 ## Changes prompted by evidence [observed]
 
@@ -58,6 +58,19 @@ The current automated checkpoint is 56 passing tests with all four authored-sour
 
 ## Deferred work and limits [explicit]
 
-Teams, public boards, tags, imports, due dates, priorities, subtasks and recoverable deletion remain outside the first release. Expired guest records currently lose access but are not automatically purged. Existing dependency audit findings remain documented in the repository. A native AI conversation link can supplement this summary if the reviewer requires one.
+Teams, public boards, imports, subtasks and recoverable deletion remain deferred. Priority, due dates and tags were added after the initial deployment, at the user’s request. Expired guest records currently lose access but are not automatically purged. Existing dependency audit findings remain documented in the repository. A native AI conversation link can supplement this summary if the reviewer requires one.
 
 Primary references consulted: [TanStack server functions](https://tanstack.com/start/latest/docs/framework/react/guide/server-functions), [TanStack hosting](https://tanstack.com/start/latest/docs/framework/react/guide/hosting), [Better Auth/TanStack integration](https://better-auth.com/docs/integrations/tanstack), [email OTP](https://better-auth.com/docs/plugins/email-otp), [Drizzle PostgreSQL](https://orm.drizzle.team/docs/get-started/postgresql-new).
+
+
+## Post-deployment amendment — September 18 [user-requested and verified]
+
+The user requested a public repository, collapsed editors after successful saves, direct command keystrokes with an outside-palette toggle, priorities, due dates and searchable user-defined tags. Delivered each feature in an atomic semantic commit after behavioral checks. Repository is now public.
+
+- Priority: None/Low/Medium/High, defaulting existing tasks to None; newest-first ordering retained.
+- Due dates: optional calendar strings backed by PostgreSQL DATE; no timezone conversion or reminders.
+- Tags: up to ten comma-separated entries, 32 characters each, trimmed/lowercased/deduplicated. Bounded arrays belong to individual private tasks. Text search matches tag substrings; exact-tag, status and text filters combine in URL state.
+- Commands: Alt/Option+N/F/0/1/2/3; outside-palette access defaults off and persists per browser, with session fallback when storage is unavailable. Editable fields are protected outside the palette.
+- Successful edits close and restore focus to the summary, or search when the task leaves the active filter. Keyboard listeners detach while streamed controls are hidden.
+
+Three additive migrations applied before release. Automated validation: 72 tests; 100% statements, branches, functions and lines; typecheck/build pass. Browser checks cover metadata, editing, combined filters and keyboard operation. Real production RPC checks additionally cover metadata clearing and cross-owner update/delete rejection. Only temporary assistant-created QA rows were removed. Hosted inbox/account acceptance remains a separate pending check.
