@@ -21,7 +21,14 @@ function TaskForm({ task, busy, save }: { task: TaskView; busy: boolean; save: (
     const form = event.currentTarget
     const values = new FormData(form)
     const saved = await save({id: task.id || undefined, title: String(values.get('title')), description: String(values.get('description')), status: values.get('status') as TaskInput['status']})
-    if (saved && !task.id) form.reset()
+    if (saved) {
+      // Collapse only after persistence succeeds; failed edits remain recoverable.
+      if (task.id) {
+        const details = form.closest('details')!
+        details.open = false
+        details.querySelector('summary')!.focus()
+      } else form.reset()
+    }
   }}>
     <label>Task title<input id={task.id || 'new-task-title'} name="title" defaultValue={task.title} required maxLength={200} placeholder="What’s your next move?" /></label>
     <label>Description<textarea name="description" defaultValue={task.description} maxLength={5000} placeholder="A little context (optional)" rows={2} /></label>

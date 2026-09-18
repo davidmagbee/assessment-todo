@@ -2,6 +2,8 @@
 
 A private to-do workspace built with TanStack Start, React, PostgreSQL and Better Auth. Crisp monochrome surfaces, restrained violet accents, and keyboard-accessible native controls.
 
+Repository visibility: **public**. Successful edits collapse to their task summary; failed saves retain the editor and input.
+
 **Live:** [assessment-todo.vercel.app](https://assessment-todo.vercel.app) · [Repository](https://github.com/davidmagbee/assessment-todo) · [Codex-assisted planning summary](https://gist.github.com/davidmagbee/230e378be4f265ddb51c6adc078e93aa). The planning link is a sanitized retrospective document, not a native chat transcript. Local email delivery is user-verified; hosted sign-in verification is pending.
 
 ## Try it locally
