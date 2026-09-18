@@ -92,3 +92,7 @@ Primary documentation: [Start server functions](https://tanstack.com/start/lates
 ## Direct commands
 
 Open with Cmd/Ctrl+K. Alt/Option+N focuses the new-task title; F focuses search; 0/1/2/3 selects All/To-do/In progress/Done. Shortcuts work while typing a command query. Enable “shortcuts outside command palette” to use them elsewhere; they ignore editable fields outside the palette. Preference persists per browser, defaults off, and falls back to this visit if storage is blocked. Tab/Enter and Escape remain available.
+
+## Task organization
+
+Priority is optional: None (default), Low, Medium or High. Set it when creating or editing a task; it appears beneath the title. Priority does not change the newest-first list order. Run committed migrations before deploying the updated application.

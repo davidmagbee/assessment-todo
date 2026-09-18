@@ -4,6 +4,8 @@ import { user } from './auth-schema.gen'
 
 export const taskStatus = pgEnum('task_status', ['todo', 'in_progress', 'done'])
 
+export const taskPriority = pgEnum('task_priority', ['none', 'low', 'medium', 'high'])
+
 /** Guest credentials are hashed before storage; expiry is fixed at creation. */
 export const guests = pgTable('guest', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -19,6 +21,7 @@ export const tasks = pgTable('task', {
   title: varchar('title', { length: 200 }).notNull(),
   description: varchar('description', { length: 5000 }).notNull().default(''),
   status: taskStatus('status').notNull().default('todo'),
+  priority: taskPriority('priority').notNull().default('none'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 }, (table) => [

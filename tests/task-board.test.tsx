@@ -12,7 +12,7 @@ test('an empty list offers a labeled task form and saves a new task', async () =
   const user = userEvent.setup()
   await user.type(screen.getByLabelText('Task title'), 'Ship something good')
   await user.click(screen.getByRole('button',{name:'Add task'}))
-  expect(save).toHaveBeenCalledWith({id: undefined, title:'Ship something good', description:'',status:'todo'})
+  expect(save).toHaveBeenCalledWith({id: undefined, title:'Ship something good', description:'',status:'todo',priority:'none'})
   expect((screen.getByLabelText('Task title') as HTMLInputElement).value).toBe('')
 })
 
@@ -20,13 +20,13 @@ test('existing tasks can be edited, filtered and deleted only after confirmation
   const user = userEvent.setup()
   const save = vi.fn().mockResolvedValue(undefined), remove = vi.fn().mockResolvedValue(undefined), search = vi.fn()
   const confirm = vi.spyOn(window, 'confirm').mockReturnValue(false)
-  render(<TaskBoard tasks={[{id:'task-a',title:'Review the design',description:'Check contrast',status:'in_progress'}]} search={{q:'',status:'all'}} onSearch={search} onSave={save} onRemove={remove} />)
+  render(<TaskBoard tasks={[{id:'task-a',title:'Review the design',description:'Check contrast',status:'in_progress',priority:'none'}]} search={{q:'',status:'all'}} onSearch={search} onSave={save} onRemove={remove} />)
   await user.click(screen.getByText('Review the design'))
   const title = screen.getAllByLabelText('Task title')[1]
   await user.clear(title)
   await user.type(title, 'Review accessibility')
   await user.click(screen.getByRole('button',{name:'Save changes'}))
-  expect(save).toHaveBeenCalledWith({id:'task-a',title:'Review accessibility',description:'Check contrast',status:'in_progress'})
+  expect(save).toHaveBeenCalledWith({id:'task-a',title:'Review accessibility',description:'Check contrast',status:'in_progress',priority:'none'})
   expect(screen.getByText('Review the design').closest('details')!.open).toBe(false)
   await user.click(screen.getByText('Review the design'))
   await user.click(screen.getByRole('button',{name:'Done'}))
@@ -45,7 +45,7 @@ test('existing tasks can be edited, filtered and deleted only after confirmation
 test('failed saves preserve input and failed deletion remains retryable', async () => {
   const user = userEvent.setup()
   vi.spyOn(window, 'confirm').mockReturnValue(true)
-  render(<TaskBoard tasks={[{id:'x',title:'Keep me',description:'',status:'done'}]} search={{q:'',status:'all'}} onSearch={vi.fn()} onSave={vi.fn().mockRejectedValue(new Error('offline'))} onRemove={vi.fn().mockRejectedValue(new Error('offline'))} />)
+  render(<TaskBoard tasks={[{id:'x',title:'Keep me',description:'',status:'done',priority:'none'}]} search={{q:'',status:'all'}} onSearch={vi.fn()} onSave={vi.fn().mockRejectedValue(new Error('offline'))} onRemove={vi.fn().mockRejectedValue(new Error('offline'))} />)
   await user.type(screen.getAllByLabelText('Task title')[0], 'Do not lose this')
   await user.click(screen.getByRole('button',{name:'Add task'}))
   expect(screen.getByRole('status').textContent).toContain('Your changes are still here')
@@ -72,4 +72,14 @@ test('palette status commands update the board filter', async () => {
   await user.click(screen.getByRole('button',{name:/Commands/}))
   await user.click(screen.getByRole('button',{name:'Show done'}))
   expect(search).toHaveBeenCalledWith({q:'keep',status:'done'})
+})
+
+test('priority can be set on creation and is visible on a collapsed task', async () => {
+  const user = userEvent.setup(), save = vi.fn().mockResolvedValue(undefined)
+  render(<TaskBoard tasks={[{id:'priority',title:'Important',description:'',status:'todo',priority:'high'}]} search={{q:'',status:'all'}} onSearch={vi.fn()} onSave={save} onRemove={vi.fn()}/>)
+  expect(screen.getByText('High priority')).toBeTruthy()
+  await user.type(screen.getAllByLabelText('Task title')[0],'Next')
+  await user.selectOptions(screen.getAllByLabelText('Priority')[0],'medium')
+  await user.click(screen.getByRole('button',{name:'Add task'}))
+  expect(save).toHaveBeenCalledWith(expect.objectContaining({title:'Next',priority:'medium'}))
 })

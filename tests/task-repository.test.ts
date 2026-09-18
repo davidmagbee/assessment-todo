@@ -78,3 +78,14 @@ test('schema declares cascading owner references and rejects ownerless records',
     .toEqual([{ action: 'cascade', columns: ['user_id'] }, { action: 'cascade', columns: ['guest_id'] }])
   await expect(db.insert(tasks).values({ title: 'Orphan' })).rejects.toThrow()
 })
+
+test('priority defaults to none and survives owner-scoped updates', async () => {
+  const owner = {kind:'user' as const,id:'alice'}
+  const task = await repository.create(owner,{title:'Prioritized'})
+  expect(task.priority).toBe('none')
+  for (const priority of ['low','medium','high']) {
+    await repository.update(owner,task.id,{title:'Prioritized',priority})
+    expect((await repository.list(owner,{q:'Prioritized'}))[0].priority).toBe(priority)
+  }
+  await expect(repository.update(owner,task.id,{title:'Prioritized',priority:'urgent'})).rejects.toThrow()
+})

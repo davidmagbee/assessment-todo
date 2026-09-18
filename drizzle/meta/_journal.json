@@ -15,6 +15,13 @@
       "when": 1789675845099,
       "tag": "0001_many_shotgun",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789741964907,
+      "tag": "0002_heavy_metal_master",
+      "breakpoints": true
     }
   ]
 }

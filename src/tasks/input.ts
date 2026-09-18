@@ -5,6 +5,8 @@ export const taskInput = z.object({
   title: z.string().trim().min(1, 'Enter a title.').max(200, 'Use at most 200 characters.'),
   description: z.string().trim().max(5000, 'Use at most 5000 characters.').default(''),
   status: z.enum(['todo', 'in_progress', 'done']).default('todo'),
+  // Explicit none keeps migrated and new tasks neutral without changing list order.
+  priority: z.enum(['none', 'low', 'medium', 'high']).default('none'),
 })
 
 export type TaskInput = z.infer<typeof taskInput>

@@ -108,3 +108,7 @@ User requested public repository, collapse after successful save, direct command
 ## Direct keyboard commands — 2026-09-18
 
 Added Alt/Option+N (new task), F (search), and 0/1/2/3 (all/to-do/in-progress/done). Available in the palette, optionally outside via an off-by-default persisted browser toggle. Outside shortcuts ignore editable fields; repeated/composing/already-handled events are ignored. Blocked storage falls back to a visible session-only preference. Callbacks use current URL filters. Validation: 61 tests; all four coverage metrics 100%; typecheck passes. User confirmed defaults; tags will be user-defined, not fixed categories.
+
+## Task priority — 2026-09-18
+
+Added None/Low/Medium/High priority to validation, PostgreSQL, create/edit forms and compact task summaries. Additive migration defaults existing tasks to None and preserves newest-first ordering. Real PostgreSQL tests cover defaults, round-trip updates and invalid values; UI tests cover choosing and displaying priority. Validation: 63 tests; four coverage metrics 100%; typecheck passes.
