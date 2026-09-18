@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import { Suspense } from 'react'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, expect, test, vi } from 'vitest'
@@ -121,4 +122,22 @@ test('every advertised action has a direct keyboard binding', () => {
     fireEvent.keyDown(window,{code,altKey:true})
     expect(search).toHaveBeenLastCalledWith(status)
   }
+})
+
+
+test('streamed refresh detaches shortcuts while their controls are hidden', () => {
+  const pending = new Promise<never>(() => {})
+  function StreamedCommands({loading}: {loading:boolean}) {
+    if (loading) throw pending
+    return <Commands onStatus={vi.fn()}/>
+  }
+  const error = vi.fn((event: ErrorEvent) => event.preventDefault())
+  window.addEventListener('error',error)
+  const view = render(<Suspense fallback={<p>Loading</p>}><StreamedCommands loading={false}/></Suspense>)
+  view.rerender(<Suspense fallback={<p>Loading</p>}><StreamedCommands loading/></Suspense>)
+  expect(screen.getByText('Loading')).toBeTruthy()
+  fireEvent.keyDown(window,{key:'k',ctrlKey:true})
+  fireEvent.keyDown(window,{code:'Digit3',altKey:true})
+  expect(error).not.toHaveBeenCalled()
+  window.removeEventListener('error',error)
 })

@@ -28,6 +28,7 @@ test('existing tasks can be edited, filtered and deleted only after confirmation
   await user.click(screen.getByRole('button',{name:'Save changes'}))
   expect(save).toHaveBeenCalledWith({id:'task-a',title:'Review accessibility',description:'Check contrast',status:'in_progress',priority:'none',dueDate:null,tags:[]})
   expect(screen.getByText('Review the design').closest('details')!.open).toBe(false)
+  expect(document.activeElement?.tagName).toBe('SUMMARY')
   await user.click(screen.getByText('Review the design'))
   await user.click(screen.getByRole('button',{name:'Done'}))
   expect(search).toHaveBeenLastCalledWith({q:'',status:'done',tag:''})
@@ -125,4 +126,16 @@ test('invalid tag input explains the limit without calling persistence or losing
   expect(screen.getByRole('status').textContent).toContain('Use at most 10 tags.')
   expect(save).not.toHaveBeenCalled()
   expect((screen.getByLabelText('Task title') as HTMLInputElement).value).toBe('Keep this')
+})
+
+
+test('saving a task that disappears from the current filter returns focus to search', async () => {
+  const user = userEvent.setup()
+  const props = {search:{q:'',tag:'',status:'todo' as const},onSearch:vi.fn(),onRemove:vi.fn(),onSave:vi.fn()}
+  const view = render(<TaskBoard {...props} tasks={[{id:'leaving',title:'Finishing',description:'',status:'todo',priority:'none',dueDate:null,tags:[]}]}/>)
+  props.onSave.mockImplementation(async () => {view.rerender(<TaskBoard {...props} tasks={[]}/>)})
+  await user.click(screen.getByText('Finishing'))
+  await user.selectOptions(screen.getAllByLabelText('Status')[1],'done')
+  await user.click(screen.getByRole('button',{name:'Save changes'}))
+  expect(document.activeElement).toBe(screen.getByRole('searchbox'))
 })

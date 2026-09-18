@@ -1,5 +1,5 @@
 import { Commands } from './commands'
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { taskInput, type TaskInput, type TaskSearch } from '../tasks/input'
 
 export type TaskView = TaskInput & { id: string }
@@ -27,7 +27,6 @@ function TaskForm({ task, busy, save }: { task: TaskView; busy: boolean; save: (
       if (task.id) {
         const details = form.closest('details')!
         details.open = false
-        details.querySelector('summary')!.focus()
       } else form.reset()
     }
   }}>
@@ -46,13 +45,22 @@ function TaskForm({ task, busy, save }: { task: TaskView; busy: boolean; save: (
 export function TaskBoard({ tasks, search, onSearch, onSave, onRemove }: Props) {
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState('')
+  const [savedTaskId, setSavedTaskId] = useState<string | null>(null)
+  useLayoutEffect(() => {
+    if (!savedTaskId) return
+    // Suspense hides the streamed list during refresh. Restore focus only after reveal.
+    const details = document.getElementById(savedTaskId)?.closest('details')
+    if (details) { details.open = false; details.querySelector('summary')!.focus() }
+    else document.getElementById('task-search')!.focus()
+    setSavedTaskId(null)
+  }, [savedTaskId, tasks])
   async function save(input: SaveInput) {
     // Explain shared validation errors locally; the server repeats validation for untrusted calls.
     const parsed = taskInput.safeParse(input)
     if (!parsed.success) { setMessage(parsed.error.issues[0].message); return false }
     setBusy(true)
     setMessage('')
-    try { await onSave({...parsed.data, id: input.id}); setMessage('Task saved.'); return true }
+    try { await onSave({...parsed.data, id: input.id}); setMessage('Task saved.'); setSavedTaskId(input.id ?? null); return true }
     catch { setMessage('Could not save. Your changes are still here. Please try again.'); return false }
     finally { setBusy(false) }
   }

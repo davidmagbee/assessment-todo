@@ -33,7 +33,7 @@ Never prefix these values with `VITE_`. `.env` and `.neon` are ignored by Git an
 ## Reviewer walkthrough
 
 1. Add a title, optional description, status, priority, due date and custom tags. Reload to verify persistence.
-2. Expand a task to edit its fields or delete it. Successful saves collapse the editor; failures preserve input. Cancel deletion to retain it.
+2. Expand a task to edit its fields or delete it. Successful saves collapse the editor and restore focus to its summary (or search if filtered out); failures preserve input. Cancel deletion to retain it.
 3. Search title/description/tags; combine with an exact tag and To-do, In progress or Done. Filters live in the URL, including browser history.
 4. Press **Cmd+K / Ctrl+K** to open commands. Use the displayed Alt/Option shortcuts directly, or Tab/Enter; Escape closes. Toggle outside-palette shortcuts on to use them without opening commands. Commands focus creation/search or select a status.
 5. Sign in with an email code to switch to a personal account list. Sign out to return to the still-valid guest list.
@@ -61,7 +61,7 @@ npm run test:coverage
 npm run build
 ```
 
-Current checkpoint: **70 tests pass**; statements, branches, functions and lines each **100%** for authored `src` TypeScript/TSX. The gate includes unimported source. Exclusions: generated route tree, generated Better Auth schema and declarations. Configuration and dependency code are outside this application-source metric.
+Current checkpoint: **72 tests pass**; statements, branches, functions and lines each **100%** for authored `src` TypeScript/TSX. The gate includes unimported source. Exclusions: generated route tree, generated Better Auth schema and declarations. Configuration and dependency code are outside this application-source metric.
 
 Tests execute migrations and application/auth logic against isolated PGlite PostgreSQL. They cover ownership, fixed expiry, CRUD, literal search, validation, OTP replay/attempts, cookie-bearing CSRF, route rendering, URL navigation, stale edits, keyboard commands and account controls. HTTP/database/email boundaries are replaced where needed; Vitest's route integration uses a transport shim because it does not run the Start RPC compiler. Live browser smoke separately verified compiled RPC creation, reload persistence and edits against Neon. Temporary smoke data was removed.
 

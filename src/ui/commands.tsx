@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { TaskSearch } from '../tasks/input'
 
 /** Native modal dialog supplies focus trapping, Escape dismissal and focus restoration. */
@@ -26,7 +26,8 @@ export function Commands({onStatus}: {onStatus: (status: TaskSearch['status']) =
     {code: 'Digit2', shortcut: '2', name: 'Show in progress', run: () => onStatus('in_progress')},
     {code: 'Digit3', shortcut: '3', name: 'Show done', run: () => onStatus('done')},
   ]
-  useEffect(() => {
+  // Layout cleanup removes shortcuts while Suspense hides controls and detaches their refs.
+  useLayoutEffect(() => {
     function keydown(event: KeyboardEvent) {
       if (event.defaultPrevented || event.repeat || event.isComposing) return
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); open(); return }
