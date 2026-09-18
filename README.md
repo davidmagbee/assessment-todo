@@ -96,3 +96,5 @@ Open with Cmd/Ctrl+K. Alt/Option+N focuses the new-task title; F focuses search;
 ## Task organization
 
 Priority is optional: None (default), Low, Medium or High. Set it when creating or editing a task; it appears beneath the title. Priority does not change the newest-first list order. Run committed migrations before deploying the updated application.
+
+Due dates are optional calendar dates (YYYY-MM-DD), with no time zone or notification semantics. Set or clear one in the task form; dates display consistently across time zones. Existing tasks have no due date.

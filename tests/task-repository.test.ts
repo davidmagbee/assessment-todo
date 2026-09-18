@@ -89,3 +89,15 @@ test('priority defaults to none and survives owner-scoped updates', async () => 
   }
   await expect(repository.update(owner,task.id,{title:'Prioritized',priority:'urgent'})).rejects.toThrow()
 })
+
+test('date-only deadlines round-trip without timezone conversion and can be cleared', async () => {
+  const owner = {kind:'user' as const,id:'alice'}
+  const task = await repository.create(owner,{title:'Deadline'})
+  expect(task.dueDate).toBeNull()
+  await repository.update(owner,task.id,{title:'Deadline',dueDate:'2028-02-29'})
+  expect((await repository.list(owner,{q:'Deadline'}))[0].dueDate).toBe('2028-02-29')
+  for (const dueDate of ['2026-02-29','2026-09-18T00:00:00Z','tomorrow','0000-01-01']) {
+    await expect(repository.update(owner,task.id,{title:'Deadline',dueDate})).rejects.toThrow()
+  }
+  expect((await repository.update(owner,task.id,{title:'Deadline',dueDate:null}))?.dueDate).toBeNull()
+})

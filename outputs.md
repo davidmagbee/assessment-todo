@@ -174,3 +174,7 @@ Added Alt/Option+N (new task), F (search), and 0/1/2/3 (all/to-do/in-progress/do
 ## Task priority — 2026-09-18
 
 Added None/Low/Medium/High priority to validation, PostgreSQL, create/edit forms and compact task summaries. Additive migration defaults existing tasks to None and preserves newest-first ordering. Real PostgreSQL tests cover defaults, round-trip updates and invalid values; UI tests cover choosing and displaying priority. Validation: 63 tests; four coverage metrics 100%; typecheck passes.
+
+## Calendar due dates — 2026-09-18
+
+Added optional date-only deadlines to PostgreSQL, validation, forms and closed task summaries. Strings remain YYYY-MM-DD throughout: no timezone conversion, scheduling or reminders. Existing tasks have no deadline. Tests cover leap day round-trip, invalid dates, setting and clearing dates. Validation: 65 tests; four coverage metrics 100%; typecheck passes. Priority and due-date additive migrations applied successfully to linked Neon production before application release.

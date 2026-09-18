@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm'
-import { check, index, pgEnum, pgTable, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
+import { check, date, index, pgEnum, pgTable, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
 import { user } from './auth-schema.gen'
 
 export const taskStatus = pgEnum('task_status', ['todo', 'in_progress', 'done'])
@@ -22,6 +22,7 @@ export const tasks = pgTable('task', {
   description: varchar('description', { length: 5000 }).notNull().default(''),
   status: taskStatus('status').notNull().default('todo'),
   priority: taskPriority('priority').notNull().default('none'),
+  dueDate: date('due_date', { mode: 'string' }),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 }, (table) => [

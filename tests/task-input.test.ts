@@ -4,12 +4,12 @@ import { taskInput } from '../src/tasks/input'
 // Exercise the public validation boundary that server mutations will consume.
 test('accepts a task and trims accidental surrounding whitespace', () => {
   expect(taskInput.parse({ title: '  Write proposal  ', description: ' Outline ', status: 'todo' }))
-    .toEqual({ title: 'Write proposal', description: 'Outline', status: 'todo', priority: 'none' })
+    .toEqual({ title: 'Write proposal', description: 'Outline', status: 'todo', priority: 'none', dueDate: null })
 })
 
 test('new tasks default to to-do with no description', () => {
   expect(taskInput.parse({ title: 'Plan release' }))
-    .toEqual({ title: 'Plan release', description: '', status: 'todo', priority: 'none' })
+    .toEqual({ title: 'Plan release', description: '', status: 'todo', priority: 'none', dueDate: null })
 })
 
 test.each(['todo', 'in_progress', 'done'])('accepts supported status %s', (status) => {

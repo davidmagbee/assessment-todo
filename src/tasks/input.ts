@@ -7,6 +7,8 @@ export const taskInput = z.object({
   status: z.enum(['todo', 'in_progress', 'done']).default('todo'),
   // Explicit none keeps migrated and new tasks neutral without changing list order.
   priority: z.enum(['none', 'low', 'medium', 'high']).default('none'),
+  // Calendar dates stay strings end-to-end; no UTC conversion or implicit time of day.
+  dueDate: z.iso.date().refine(value => value >= '0001-01-01', 'Use a year from 0001 to 9999.').nullable().default(null),
 })
 
 export type TaskInput = z.infer<typeof taskInput>
