@@ -88,3 +88,7 @@ Neon CLI linkage targets `falling-fog-34559809` / `production`. The requested em
 [plan.md](plan.md), [noted.md](noted.md), [chat.md](chat.md) and [outputs.md](outputs.md) contain chronological checkpoints; newer amendments supersede older proposals. Chat entries are labeled summaries, not a verbatim transcript. Project skills and provenance are under `.agents/skills` and `skills-lock.json`.
 
 Primary documentation: [Start server functions](https://tanstack.com/start/latest/docs/framework/react/guide/server-functions), [Start hosting](https://tanstack.com/start/latest/docs/framework/react/guide/hosting), [Better Auth integration](https://better-auth.com/docs/integrations/tanstack), [email OTP](https://better-auth.com/docs/plugins/email-otp).
+
+## Direct commands
+
+Open with Cmd/Ctrl+K. Alt/Option+N focuses the new-task title; F focuses search; 0/1/2/3 selects All/To-do/In progress/Done. Shortcuts work while typing a command query. Enable “shortcuts outside command palette” to use them elsewhere; they ignore editable fields outside the palette. Preference persists per browser, defaults off, and falls back to this visit if storage is blocked. Tab/Enter and Escape remain available.

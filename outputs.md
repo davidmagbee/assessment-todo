@@ -166,3 +166,7 @@ Vercel runs Node 24.19.0; adjusted package engine minimum from 24.21.0 to that s
 ## Public repository and editor completion — 2026-09-18
 
 User requested public repository, collapse after successful save, direct command shortcuts with an outside-palette toggle, priority, due dates and searchable tags. GitHub visibility is verified PUBLIC. Successful edits now collapse and return focus to their summary; failed edits remain open. Regression demonstrated red before green. Validation: 56 tests; statements/branches/functions/lines 100%; typecheck passes. Remaining enhancements follow as separate commits.
+
+## Direct keyboard commands — 2026-09-18
+
+Added Alt/Option+N (new task), F (search), and 0/1/2/3 (all/to-do/in-progress/done). Available in the palette, optionally outside via an off-by-default persisted browser toggle. Outside shortcuts ignore editable fields; repeated/composing/already-handled events are ignored. Blocked storage falls back to a visible session-only preference. Callbacks use current URL filters. Validation: 61 tests; all four coverage metrics 100%; typecheck passes. User confirmed defaults; tags will be user-defined, not fixed categories.
